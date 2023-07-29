@@ -1,0 +1,24 @@
+.colordr {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 80vh;
+  background-image: url(./images/Background\ Pattern.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.container {
+  background-color: white;
+  text-align: center;
+}
+h2 {
+  color: #625bf7;
+}

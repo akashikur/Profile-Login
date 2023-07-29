@@ -1,0 +1,67 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,100;1,200&family=Roboto:ital,wght@0,100;0,400;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="colordr"></div>
+    <div class="container">
+      <p>Welcome back!👋</p>
+      <h3>Sign up to your account</h3>
+      <form id="signupForm">
+        <label for="username">Your name</label>
+        <input type="text" name="username" required />
+        <label for="email">Your email</label>
+        <input type="email" name="email" required />
+        <label for="password">Password</label>
+        <input type="password" name="password" required />
+        <label for="password">Confirm Password</label>
+        <input type="password" name="conformPass" required />
+
+        <button type="submit">CONTINUE</button>
+      </form>
+      <h5>Error: All fields are mandatory!</h5>
+      <p class="signin">Don't have an account?<a href="#">Sign up</a></p>
+    </div>
+
+    <script>
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", (event) => {
+          event.preventDefault();
+          const formData = new FormData(event.target);
+          const userData = {};
+          formData.forEach((value, key) => {
+            userData[key] = value;
+          });
+          const accessToken = generateAccessToken(16);
+          console.log(accessToken);
+          localStorage.setItem("userDetails", JSON.stringify(userData));
+          localStorage.setItem("accessToken", accessToken);
+
+          window.location.href = "profile.html";
+        });
+
+      function generateAccessToken(length) {
+        const charset =
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        let token = "";
+
+        for (let i = 0; i < length; i++) {
+          const randomIndex = Math.floor(Math.random() * charset.length);
+          token += charset[randomIndex];
+        }
+
+        return token;
+      }
+    </script>
+  </body>
+</html>
